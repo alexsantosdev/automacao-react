@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 80,
+    backgroundColor: '#f2f2f2'
   },
   title: {
     fontFamily: 'Poppins_600SemiBold',

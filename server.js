@@ -2,13 +2,13 @@ var firebase = require("firebase");
 
 // Inicializa Firebase com suas configurações
 var firebaseConfig = {
-  apiKey: "AIzaSyCCyijKUygZeBhGk4cSslZIJ5wYSxSPPCA",
-  authDomain: "automacao-c511a.firebaseapp.com",
-  databaseURL: "https://automacao-c511a.firebaseio.com",
-  projectId: "automacao-c511a",
-  storageBucket: "automacao-c511a.appspot.com",
-  messagingSenderId: "211481686007",
-  appId: "1:211481686007:web:8e54bc42aea35b0c4b48f2"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABSE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -23,15 +23,15 @@ var board = new five.Board();
 
 //Quando conseguir se conectar a placa, realiza os comandos dentro da 'function()'
 board.on("ready", function() {
-  var led = new five.Led(2);
+  var relay = new five.Relay(8);
   var estadoLed = "OFF";
 
   //A referência executará a função toda vez que o valor de LED for alterado no banco de dados
   referencia.on('value', (snapshot) => {
     if (snapshot.val() == "ON")
-      led.on();
+      relay.open();
     else
-      led.off();
+      relay.close();
   });
 
   //setInterval executa a função que inverte o estado do LED em intervalos de 2000ms (2 segundos)

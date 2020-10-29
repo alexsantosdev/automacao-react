@@ -1,7 +1,6 @@
 // @refresh reset
 import React, { useEffect } from 'react'
 import { View, ScrollView, Text, Image, TouchableOpacity, YellowBox } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient'
 
 import lightbulb from '../../assets/images/lightbulb.png'
 import lightbulbOff from '../../assets/images/lightbulbOff.png'
@@ -54,47 +53,43 @@ export default function Landing() {
     });
   })
   return(
-    <View>
+    <View style={styles.container}>
       <ScrollView>
-        <LinearGradient
-          colors={['#f5f5f5', '#ffe1d4']}
-          style={styles.container}>
-          <Text style={styles.title}>Painel de controle</Text>
-          <Text style={styles.subtitle}>Quarto</Text>
-          <View style={styles.panel}>
-            <View style={estado ? styles.boxon : styles.box}>
-              <Image source={estado ? lightbulbOff : lightbulb} style={styles.image} />
-              <Text style={estado ? styles.boxtitleOff : styles.boxtitle}>Lâmpada</Text>
-              <TouchableOpacity onPress={toggleLed} style={estado ? styles.buttontoggleOff : styles.buttontoggleOn}>
-                <Text style={styles.buttontext}>{estado ? 'Desligar' : 'Acender'}</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.box}>
-              <Image source={television} style={styles.image} />
-              <Text style={styles.boxtitle}>Televisão</Text>
-              <TouchableOpacity style={styles.buttontoggleOn}>
-                <Text style={styles.buttontext}>Ligar</Text>
-              </TouchableOpacity>
-            </View>
+        <Text style={styles.title}>Painel de controle</Text>
+        <Text style={styles.subtitle}>Quarto</Text>
+        <View style={styles.panel}>
+          <View style={estado ? styles.boxon : styles.box}>
+            <Image source={estado ? lightbulbOff : lightbulb} style={styles.image} />
+            <Text style={estado ? styles.boxtitleOff : styles.boxtitle}>Lâmpada</Text>
+            <TouchableOpacity onPress={toggleLed} style={estado ? styles.buttontoggleOff : styles.buttontoggleOn}>
+              <Text style={styles.buttontext}>{estado ? 'Desligar' : 'Acender'}</Text>
+            </TouchableOpacity>
           </View>
-          <Text style={styles.subtitle}>Sala</Text>
-          <View style={styles.panel}>
-            <View style={styles.box}>
-              <Image source={lightbulb} style={styles.image} />
-              <Text style={styles.boxtitle}>Lâmpada</Text>
-              <TouchableOpacity style={styles.buttontoggleOn}>
-                <Text style={styles.buttontext}>Acender</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.box}>
-              <Image source={television} style={styles.image} />
-              <Text style={styles.boxtitle}>Televisão</Text>
-              <TouchableOpacity style={styles.buttontoggleOn}>
-                <Text style={styles.buttontext}>Ligar</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.box}>
+            <Image source={television} style={styles.image} />
+            <Text style={styles.boxtitle}>Televisão</Text>
+            <TouchableOpacity style={styles.buttontoggleOn}>
+              <Text style={styles.buttontext}>Ligar</Text>
+            </TouchableOpacity>
           </View>
-        </LinearGradient>
+        </View>
+        <Text style={styles.subtitle}>Sala</Text>
+        <View style={styles.panel}>
+          <View style={styles.box}>
+            <Image source={lightbulb} style={styles.image} />
+            <Text style={styles.boxtitle}>Lâmpada</Text>
+            <TouchableOpacity style={styles.buttontoggleOn}>
+              <Text style={styles.buttontext}>Acender</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.box}>
+            <Image source={television} style={styles.image} />
+            <Text style={styles.boxtitle}>Televisão</Text>
+            <TouchableOpacity style={styles.buttontoggleOn}>
+              <Text style={styles.buttontext}>Ligar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
